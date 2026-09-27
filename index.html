@@ -220,7 +220,7 @@
     <script type="module" src="./script/event-effect.js"></script>
     <script>
         const username = 'ItWorkedInStaging'; 
-        const container = document.querySelector('.repository-container');
+        const container = document.querySelector('.project-container');
 
         async function fetchLatestProjects() {
           try {
@@ -232,30 +232,34 @@
             const repos = await response.json();
 
             container.innerHTML = repos.map(repo => `
-            <div class="repository-head">
-              <a
-                href="${repo.html_url}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3>${repo.name}</h3>
-              </a>
-              <a
-                href="${repo.html_url}"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><img
-                  width="16"
-                  height="16"
-                  src="./asset/svg/external-link.svg"
-                  alt="external-link"
-              /></a>
-            </div>
+            <!-- Repo Start -->
+            <div class="repository-container">
+              <div class="repository-head">
+                <a
+                  href="${repo.html_url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <h3>${repo.name}</h3>
+                </a>
+                <a
+                  href="${repo.html_url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><img
+                    width="16"
+                    height="16"
+                    src="./asset/svg/external-link.svg"
+                    alt="external-link"
+                /></a>
+              </div>
 
-            <p>${repo.description || ''}</p>
-            <div class="repository-language-used-container">
-              <span>Built with: ${repo.language || 'Mixed'}</span>
+              <p>${repo.description || ''}</p>
+              <div class="repository-language-used-container">
+                <span>Built with: ${repo.language || 'Mixed'}</span>
+              </div>
             </div>
+            <!-- Repo End -->
               
             `).join('');
 
